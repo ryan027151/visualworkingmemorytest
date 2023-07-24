@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Website</title>
+  <link rel="stylesheet" type = "text/css" href="/static/styles/styles2.css" />
+</head>
+<body>
+  
+  <div id="intro-page">
+    <h1>Welcome to the Visual Working Memory Testing site!</h1>
+    <p>The test require you to memorize as many details as you can within one minutes. After that, you will have to redraw it. Click "Submit" when you done</p>
+    <p>Click Next to move forword.</p>
+    <button id="next">Next</button>
+  </div>
+
+  <div id="container">
+    <div id="image-container">
+      <img id="image" src="/static/path_to_your_image.jpg">
+      <div id="timer"></div>
+    </div>
+    <div id="drawing-container">
+      <div id="drawing-box">
+        <canvas id="canvas"></canvas>
+      </div>
+      <div id="drawing-tools">
+        <button id="pen">Pen</button>
+        <button id="eraser">Eraser</button>
+        <button id="delete">Delete</button>
+        <button id="submit">Submit</button>
+      </div>
+    </div>
+  </div>
+  <script src="/static/script2.js" charset="utf-8"></script>
+</body>
+</html>
