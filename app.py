@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-import pymysql
 import base64
 
 app = Flask(__name__)
