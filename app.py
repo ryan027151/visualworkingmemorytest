@@ -12,7 +12,7 @@ class Drawing(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     data_url = db.Column(db.Text, nullable=False)
 
-@app.route('/')h
+@app.route('/')
 def index():
     return render_template('index2.html')
 
