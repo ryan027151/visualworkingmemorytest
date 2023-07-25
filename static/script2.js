@@ -145,8 +145,7 @@ window.addEventListener('load', function() {
           .then(response => {
             // Check if the submission was successful (you can customize this based on your server response)
             if (response.ok) {
-              // Redirect the user to a new page (replace 'newpage.html' with the actual filename)
-              window.location.href = 'ending.html';
+              console.log("Redirect")
             } else {
               // Handle unsuccessful submission
               console.log('Submission failed.');

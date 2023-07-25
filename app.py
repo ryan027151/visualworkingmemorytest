@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify,redirect,url_for
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -18,6 +18,10 @@ class Drawing(db.Model):
 def index():
     return render_template('index2.html')
 
+@app.route("/ending")
+def ending():
+    return render_template('ending.html')
+
 @app.route('/store_drawing', methods=['POST'])
 def store_drawing():
     data_url = request.json.get('drawing')
@@ -28,7 +32,7 @@ def store_drawing():
             db.session.add(drawing)
             db.session.commit()
             print("Drawing stored in the database.")
-            return jsonify({'message': 'Drawing uploaded successfully.'}), 200
+            return redirect(url_for("ending")), 200
         except Exception as e:
             db.session.rollback()
             print("Error storing the drawing:", str(e))
