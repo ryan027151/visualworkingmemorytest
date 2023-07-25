@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 # Use the CLEARDB_DATABASE_URL environment variable from Heroku
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('CLEARDB_DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('CLEARDB_DATABASE_URL').replace("?reconnect=true", "")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Add this line to avoid a warning
 
 db = SQLAlchemy(app)
