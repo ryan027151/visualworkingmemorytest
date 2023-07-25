@@ -5,7 +5,8 @@ window.addEventListener('load', function() {
   var imageElement = document.getElementById('image');
   var timerElement = document.getElementById('timer');
   var drawingContainer = document.getElementById('drawing-container');
-  var canvas = document.getElementById('canvas');
+  var canvas = new SignaturePad(document.getElementById('canvas'));
+  var blank = document.getElementById('blankCanvas')
   var pen = document.getElementById('pen');
   var eraser = document.getElementById('eraser');
   var deleteButton = document.getElementById('delete');
@@ -29,7 +30,7 @@ window.addEventListener('load', function() {
   function showImageAndStartTimer() {
     imageElement.style.display = 'block';
     timerElement.style.display = 'block';
-    startTimer(60);
+    startTimer(1);
   }
 
   function startTimer(duration) {
@@ -53,6 +54,8 @@ window.addEventListener('load', function() {
         drawingContainer.style.display = 'block';
         canvas.width = drawingBox.offsetWidth;
         canvas.height = drawingBox.offsetHeight;
+        blank.width = canvas.width;
+        blank.height = canvas.height;
         showDrawingTools();
       }
     }, 1000);
@@ -122,7 +125,7 @@ window.addEventListener('load', function() {
     var confirmSubmit = window.confirm('Are you sure you want to submit the drawing?');
   
 
-    if (canvas.toJSON().objects.length === 0) {
+    if (mainCanvas.toDataURL() == blank.toDataURL()) {
       alert('canvas is empty');
     }
     else {
