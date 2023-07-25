@@ -125,7 +125,7 @@ window.addEventListener('load', function() {
     var confirmSubmit = window.confirm('Are you sure you want to submit the drawing?');
   
 
-    if (mainCanvas.toDataURL() == blank.toDataURL()) {
+    if (canvas.toDataURL() == blank.toDataURL()) {
       alert('canvas is empty');
     }
     else {
