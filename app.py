@@ -3,8 +3,8 @@ from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-# Use the DATABASE_URL environment variable from Heroku
-app.config['SQLALCHEMY_DATABASE_URI']='mysql://root:pan060700@localhost:3306/testing'
+# Use the DATABASE_URL environment variable from Heroku ClearDB
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://bbe57740709cdc:12e275c1@us-cdbr-east-06.cleardb.net/heroku_98d073a92b5a846?reconnect=true'
 db = SQLAlchemy(app)
 
 class Drawing(db.Model):
@@ -48,7 +48,6 @@ def view_image(drawing_id):
     else:
         return "Drawing not found."
 
-
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT",5000))
-    app.run(host='0.0.0.0',port=port)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
