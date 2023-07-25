@@ -5,7 +5,7 @@ window.addEventListener('load', function() {
   var imageElement = document.getElementById('image');
   var timerElement = document.getElementById('timer');
   var drawingContainer = document.getElementById('drawing-container');
-  var canvas = new SignaturePad(document.getElementById('canvas'));
+  var canvas = document.getElementById('canvas');
   var blank = document.getElementById('blankCanvas')
   var pen = document.getElementById('pen');
   var eraser = document.getElementById('eraser');
