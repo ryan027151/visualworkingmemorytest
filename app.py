@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, jsonify,redirect,url_for
+from flask import Flask, render_template, request, jsonify,redirect
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -32,7 +32,7 @@ def store_drawing():
             db.session.add(drawing)
             db.session.commit()
             print("Drawing stored in the database.")
-            return redirect(url_for("ending")), 200
+            return jsonify({'message': 'Drawing uploaded successfully.'}), 200
         except Exception as e:
             db.session.rollback()
             print("Error storing the drawing:", str(e))
