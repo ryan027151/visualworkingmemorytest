@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask_mysqldb import MySQLdb
 
 app = Flask(__name__)
 # Use the DATABASE_URL environment variable from Heroku
