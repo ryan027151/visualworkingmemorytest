@@ -121,38 +121,44 @@ window.addEventListener('load', function() {
     // Display a confirmation dialog before submitting
     var confirmSubmit = window.confirm('Are you sure you want to submit the drawing?');
   
-    // If the user confirms, proceed with the submission
-    if (confirmSubmit) {
-      var dataURL = canvas.toDataURL(); // Get the drawing as a data URL
-      console.log(dataURL); // Add this line to print the data URL to the console
-  
-      // Send the drawing data to the server for storage
-      fetch('/store_drawing', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ drawing: dataURL })
-      })
-        .then(response => {
-          // Check if the submission was successful (you can customize this based on your server response)
-          if (response.ok) {
-            // Redirect the user to a new page (replace 'newpage.html' with the actual filename)
-            window.location.href = 'ending.html';
-          } else {
-            // Handle unsuccessful submission
-            console.log('Submission failed.');
-          }
-        })
-        .catch(error => {
-          // Handle submission error
-          console.error('Error submitting the drawing:', error);
-        });
-    } else {
-      // If the user cancels, do nothing or provide feedback as needed
-      console.log('Submission canceled by the user.');
+
+    if (canvas.toJSON().objects.length === 0) {
+      alert('canvas is empty');
     }
-  }
+    else {
+      // If the user confirms, proceed with the submission
+      if (confirmSubmit) {
+        var dataURL = canvas.toDataURL(); // Get the drawing as a data URL
+        console.log(dataURL); // Add this line to print the data URL to the console
+
+        // Send the drawing data to the server for storage
+        fetch('/store_drawing', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ drawing: dataURL })
+        })
+          .then(response => {
+            // Check if the submission was successful (you can customize this based on your server response)
+            if (response.ok) {
+              // Redirect the user to a new page (replace 'newpage.html' with the actual filename)
+              window.location.href = 'ending.html';
+            } else {
+              // Handle unsuccessful submission
+              console.log('Submission failed.');
+            }
+          })
+          .catch(error => {
+            // Handle submission error
+            console.error('Error submitting the drawing:', error);
+          });
+      } else {
+        // If the user cancels, do nothing or provide feedback as needed
+        console.log('Submission canceled by the user.');
+      }
+    }
+    }
    
 
   pen.addEventListener('click', selectPenTool);
