@@ -30,7 +30,7 @@ window.addEventListener('load', function() {
   function showImageAndStartTimer() {
     imageElement.style.display = 'block';
     timerElement.style.display = 'block';
-    startTimer(60);
+    startTimer(1);
   }
 
   function startTimer(duration) {
